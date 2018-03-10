@@ -7,7 +7,7 @@ import (
 // Node for linked list
 type Node struct {
 	Data interface{}
-	next interface{}
+	next *Node
 }
 
 // NewNode is creating node for linked list
@@ -17,12 +17,12 @@ func NewNode(data interface{}) *Node {
 
 // LinkedList is to store head
 type LinkedList struct {
-	head interface{}
+	head *Node
 }
 
 // NewLinkedList is creating linked list
 func NewLinkedList() *LinkedList {
-	return &LinkedList{head: nil}
+	return &LinkedList{}
 }
 
 // PushFront to the LinkedList
@@ -34,10 +34,7 @@ func (linkedlist *LinkedList) PushFront(node *Node) {
 		return
 	}
 
-	lastestHead, ok := linkedlist.head.(*Node)
-	if ok {
-		lastestHead.next = tempHead
-	}
+	linkedlist.head.next = tempHead
 }
 
 // PopFront to the LinkedList
@@ -48,12 +45,11 @@ func (linkedlist *LinkedList) PopFront() interface{} {
 		return nil
 	}
 
-	if tempHead.(*Node).next == nil {
+	if tempHead.next == nil {
 		linkedlist.head = nil
 	}
 
-	linkedlist.head = tempHead.(*Node).next
-
+	linkedlist.head = tempHead.next
 	return tempHead
 }
 
@@ -64,7 +60,7 @@ func (linkedlist *LinkedList) Size() int {
 
 	for temp != nil {
 		counter++
-		temp = temp.(*Node).next
+		temp = temp.next
 	}
 
 	return counter
@@ -78,7 +74,7 @@ func (linkedlist *LinkedList) PrintList() {
 	}
 	temp := linkedlist.head
 	for temp != nil {
-		fmt.Println(temp.(*Node).Data)
-		temp = temp.(*Node).next
+		fmt.Println(temp.Data)
+		temp = temp.next
 	}
 }
