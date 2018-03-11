@@ -38,7 +38,7 @@ func (linkedlist *LinkedList) PushFront(node *Node) {
 }
 
 // PopFront to the LinkedList
-func (linkedlist *LinkedList) PopFront() interface{} {
+func (linkedlist *LinkedList) PopFront() *Node {
 	tempHead := linkedlist.head
 
 	if tempHead == nil {
@@ -64,6 +64,73 @@ func (linkedlist *LinkedList) Size() int {
 	}
 
 	return counter
+}
+
+// Empty is to check whether linkedlist is empty or not
+func (linkedlist LinkedList) Empty() bool {
+	return linkedlist.head == nil
+}
+
+// PushBack is to push at the end
+func (linkedlist *LinkedList) PushBack(node *Node) {
+
+	if linkedlist.head == nil {
+		linkedlist.head = node
+		return
+	}
+
+	temp := linkedlist.head
+	for temp != nil {
+		if temp.next == nil {
+			temp.next = node
+			return
+		}
+		temp = temp.next
+	}
+}
+
+// PopBack is to pop node at the end
+func (linkedlist LinkedList) PopBack() *Node {
+
+	if linkedlist.head == nil {
+		return nil
+	}
+
+	temp := linkedlist.head
+	for temp != nil {
+		nextNode := temp.next
+		if nextNode.next == nil {
+			temp.next = nil
+			return nextNode
+		}
+		temp = nextNode
+	}
+
+	return nil
+}
+
+// Back is to get node at the end
+func (linkedlist LinkedList) Back() *Node {
+
+	if linkedlist.head == nil {
+		return nil
+	}
+
+	temp := linkedlist.head
+	for temp != nil {
+		nextNode := temp.next
+		if nextNode.next == nil {
+			return nextNode
+		}
+		temp = nextNode
+	}
+
+	return nil
+}
+
+// Front is to get node at the front
+func (linkedlist LinkedList) Front() *Node {
+	return linkedlist.head
 }
 
 // PrintList to console
