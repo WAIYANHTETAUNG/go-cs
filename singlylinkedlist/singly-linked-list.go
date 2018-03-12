@@ -147,7 +147,7 @@ func (linkedlist LinkedList) ValueAt(n int) *Node {
 	return nil
 }
 
-// Erase is to delete node at the given index
+// Erase is to delete node at the given nth index
 func (linkedlist LinkedList) Erase(n int) *Node {
 	current := 0
 	temp := linkedlist.head
@@ -162,7 +162,7 @@ func (linkedlist LinkedList) Erase(n int) *Node {
 	return nil
 }
 
-// Insert is to insert node at the given index
+// Insert is to insert node at the given nth index
 func (linkedlist LinkedList) Insert(n int, node *Node) *Node {
 	current := 0
 	temp := linkedlist.head
