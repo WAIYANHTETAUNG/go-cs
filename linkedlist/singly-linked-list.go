@@ -133,6 +133,20 @@ func (linkedlist LinkedList) Front() *Node {
 	return linkedlist.head
 }
 
+// ValueAt is to get node at the nth element
+func (linkedlist LinkedList) ValueAt(n int) *Node {
+	current := 0
+	temp := linkedlist.head
+	for temp != nil {
+		if current == n {
+			return temp
+		}
+		current++
+		temp = temp.next
+	}
+	return nil
+}
+
 // PrintList to console
 func (linkedlist *LinkedList) PrintList() {
 	if linkedlist.head == nil {

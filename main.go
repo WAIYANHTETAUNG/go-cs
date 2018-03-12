@@ -25,6 +25,6 @@ func main() {
 
 	fmt.Println(data)
 	fmt.Println(data1)
-
+	fmt.Println(list.ValueAt(0).Data)
 	list.PrintList()
 }
