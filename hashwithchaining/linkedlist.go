@@ -1,4 +1,4 @@
-package singlylinkedlist
+package hashwithchaining
 
 import (
 	"fmt"
@@ -6,13 +6,14 @@ import (
 
 // Node for linked list
 type Node struct {
-	Data interface{}
+	key  string
+	val  int
 	Next *Node
 }
 
 // NewNode is creating node for linked list
-func NewNode(data interface{}) *Node {
-	return &Node{Data: data, Next: nil}
+func NewNode(key string, val int) *Node {
+	return &Node{key: key, val: val, Next: nil}
 }
 
 // LinkedList is to store head
@@ -186,7 +187,6 @@ func (linkedlist *LinkedList) PrintList() {
 	}
 	temp := linkedlist.Head
 	for temp != nil {
-		fmt.Println(temp.Data)
 		temp = temp.Next
 	}
 }
