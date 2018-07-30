@@ -11,4 +11,5 @@ func TestHash(t *testing.T) {
 	hashtable.Set("veve", 200)
 
 	assert.Equal(t, hashtable.Get("veve"), 200)
+	assert.False(t, hashtable.Has("ok"))
 }

@@ -59,3 +59,33 @@ func (hashtable *HashTable) Get(key string) int {
 
 	return value
 }
+
+//Has is to check whether hashmap has key
+func (hashtable *HashTable) Has(key string) bool {
+
+	has := false
+	str := key
+	sum := 0
+	for _, elem := range str {
+		sum += int(elem)
+	}
+
+	hashKey := Hash(sum)
+
+	linkedValues := hashtable.Store[hashKey]
+	temp := linkedValues.Head
+
+	if temp == nil {
+		return has
+	}
+
+	for temp != nil {
+		if temp.key == key {
+			has = true
+			break
+		}
+		temp = temp.Next
+	}
+
+	return has
+}
